@@ -1,0 +1,21 @@
+
+{% extends "base.j2" %}
+{% block header %}
+{#    <span class="content-section">About Page</span>#}
+{% endblock header %}
+{% block content %}
+    <div>About Page</div>
+    <table  style="margin-left: 10px;border:1px solid black;">
+    {% for user in users %}
+        <tr>
+            <td>{{ user.username|e }}</td>
+            <td>{{ user.password|e }}</td>
+            <td>{{ user.email|e }}</td>
+            <td>{{ user.institution|e }}</td>
+            <td><a href="/delete?id={{ user.id }}">DELETE</a>
+         <td><a href="/update?id={{ user.id }}">UPDATE</a>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock content %}

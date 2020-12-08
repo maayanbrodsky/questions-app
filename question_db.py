@@ -86,6 +86,45 @@ def register():
         return render_template('about.j2')
 
 
+@app.route("/read", methods=['GET', 'POST'])
+def read():
+    if request.method == 'GET':
+        users = Users.select()
+        return render_template('read.j2', users=users)
+    elif request.method == 'POST':
+        details = dict(request.form)
+        print(details)
+        Users.create(username=details['username'],
+                     password=details['password'],
+                     email=details['email'],
+                     institution=details['institution'])
+        return render_template('about.j2')
+
+@app.route("/delete", methods=['GET'])
+def delete():
+    if request.method == 'GET':
+        id = request.args.get('id')
+        delRows = Users.delete().where(Users.id == id).execute()
+        if delRows > 0:
+            return render_template('delsuccess.j2')
+        else:
+            return render_template('delfailed.j2')
+
+
+@app.route("/update", methods=['GET', 'POST'])
+def update():
+    if request.method == 'GET':
+        id = request.args.get('id')
+        user = Users.select().where(Users.id == id).get()
+        return render_template('update.j2', user=user)
+    elif request.method == 'POST':
+        details = dict(request.form)
+        print(details)
+        Users.update(username=details['username'],password=details['password'],email=details['email'],institution=details['institution']).where(Users.id == details['id']).execute()
+        return render_template('about.j2')
+
+
+
 
 if __name__ == '__main__':
     app.run()
