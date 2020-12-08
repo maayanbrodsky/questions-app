@@ -83,18 +83,6 @@ def register():
                      password=details['password'],
                      email=details['email'],
                      institution=details['institution'])
-        # with db.atomic():
-        #     for item in data_dicte:
-        # Users.insert(details)
-        # values = details.values()
-        # keys = details.keys()
-        #
-        # # print(values)
-        # # print(keys)
-        # for k, v in details:
-        #     print(k)
-        #     print(v)
-        #     Users.create(k=v)
         return render_template('about.j2')
 
 
