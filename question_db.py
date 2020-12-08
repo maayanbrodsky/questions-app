@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
 from datetime import datetime
-import jinja2
 
 import config
 
@@ -41,17 +40,35 @@ class Questions(BaseModel):
 
 TABLES = [Topics, Questions]
 
+
 with db.connection_context():
     db.create_tables(TABLES, safe=True)
 
-@app.route("/home")
+@app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('home.j2')
+    if request.method == 'GET':
+        print('hello')
 
 
-@app.route("/about")
+        return render_template('about.j2')
+    else:
+        return render_template('home.j2')
+
+
+@app.route("/about", methods=['GET', 'POST'])
 def about():
     return render_template('about.j2')
+
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        return render_template('register.j2')
+    elif request.method == 'POST':
+        name = request.form
+        print(name)
+        return render_template('about.j2')
+
 
 
 

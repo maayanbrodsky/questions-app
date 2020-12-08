@@ -1,0 +1,13 @@
+{% extends "base.j2" %}
+{% block header %}
+{#    <span class="content-section">About Page</span>#}
+{% endblock header %}
+{% block content %}
+<h2 class="content-section" >Register</h2>
+    # the action argument needs to be the same as the page and the method needs to be POST
+    <form class="content-section" action="/register", method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+{% endblock content %}
