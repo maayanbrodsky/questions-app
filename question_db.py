@@ -9,7 +9,7 @@ app.config.from_pyfile('config.py')
 
 
 db = PostgresqlDatabase(
-        'questions1',  # Required by Peewee.
+        'question_app_db',  # Required by Peewee.
         user='postgres',  # Will be passed directly to psycopg2.
         password='Agent99',  # Ditto.
     )
@@ -28,17 +28,29 @@ class Topics(BaseModel):
         table_name = 'topics'
 
 
+class Users(BaseModel):
+    username = TextField()
+    email = TextField()
+    password = TextField()
+    institution = TextField()
+
+    class Meta:
+        table_name = 'users'
+
+
 class Questions(BaseModel):
     textbook = TextField()
     chapter = IntegerField()
     section = TextField()
-    # topic = ForeignKeyField(Topics)
+    submitted_by = ForeignKeyField(Users)
+    topic = ForeignKeyField(Topics)
 
     class Meta:
         table_name = 'questions'
 
 
-TABLES = [Topics, Questions]
+
+TABLES = [Topics, Questions, Users]
 
 
 with db.connection_context():
@@ -65,11 +77,25 @@ def register():
     if request.method == 'GET':
         return render_template('register.j2')
     elif request.method == 'POST':
-        name = request.form
-        print(name)
+        details = dict(request.form)
+        print(details)
+        Users.create(username=details['username'],
+                     password=details['password'],
+                     email=details['email'],
+                     institution=details['institution'])
+        # with db.atomic():
+        #     for item in data_dicte:
+        # Users.insert(details)
+        # values = details.values()
+        # keys = details.keys()
+        #
+        # # print(values)
+        # # print(keys)
+        # for k, v in details:
+        #     print(k)
+        #     print(v)
+        #     Users.create(k=v)
         return render_template('about.j2')
-
-
 
 
 

@@ -6,8 +6,14 @@
 <h2 class="content-section" >Register</h2>
     # the action argument needs to be the same as the page and the method needs to be POST
     <form class="content-section" action="/register", method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password">
+        <label for="email">email:</label>
+        <input type="text" name="email" id="email">
+        <label for="institution">Institution:</label>
+        <input type="text" name="institution" id="institution">
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 {% endblock content %}
