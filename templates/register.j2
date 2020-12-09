@@ -4,16 +4,16 @@
 {% endblock header %}
 {% block content %}
 <h2 class="content-section" >Register</h2>
-    # the action argument needs to be the same as the page and the method needs to be POST
+ {# the action argument needs to be the same as the page and the method needs to be POST#}
     <form class="content-section" action="/register", method="POST">
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username"><br>
         <label for="password">Password:</label>
-        <input type="text" name="password" id="password">
+        <input type="text" name="password" id="password"><br>
         <label for="email">email:</label>
-        <input type="text" name="email" id="email">
+        <input type="text" name="email" id="email"><br>
         <label for="institution">Institution:</label>
-        <input type="text" name="institution" id="institution">
+        <input type="text" name="institution" id="institution"><br>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 {% endblock content %}

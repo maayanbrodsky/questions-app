@@ -7,7 +7,23 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: #444444;
   }
-  
+
+  label {
+    font-size: large;
+    width: 240px;
+    display: inline-block;
+  }
+
+  input {
+    padding-left: 1rm;
+  }
+
+  .form-lines{
+    font-size: large;
+    width: 240px;
+    display: inline-block;
+  }
+
   .bg-steel {
     background-color: #5f788a;
   }
@@ -78,3 +94,4 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+

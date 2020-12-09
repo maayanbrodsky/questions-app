@@ -1,19 +1,26 @@
 
 {% extends "base.j2" %}
-{% block header %}
+{#{% block header %}#}
 {#    <span class="content-section">About Page</span>#}
-{% endblock header %}
+{#{% endblock header %}#}
 {% block content %}
-    <div>About Page</div>
-    <table  style="margin-left: 10px;border:1px solid black;">
-    {% for user in users %}
+    <div class="content-section"><b>User List</b></div>
+    <table  class="table" style="margin-left: 20px; border:2px solid black;">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Institution</th>
+            <th colspan="2" style="text-align: center">Action</th>
+        </tr>
+        {% for user in users %}
         <tr>
             <td>{{ user.username|e }}</td>
             <td>{{ user.password|e }}</td>
             <td>{{ user.email|e }}</td>
             <td>{{ user.institution|e }}</td>
-            <td><a href="/delete?id={{ user.id }}">DELETE</a>
-         <td><a href="/update?id={{ user.id }}">UPDATE</a>
+            <td><a href="/delete?id={{ user.id }}">DELETE</a>   {# this create a link to the "delete" function with an argument for the user id taken by the 'GET' method.#}
+            <td><a href="/update?id={{ user.id }}">UPDATE</a>   {# this create a link to the "updaאe" function with an argument for the user id taken by the 'GET' method.#}
         </tr>
     {% endfor %}
     </table>

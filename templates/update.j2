@@ -4,17 +4,17 @@
 {% endblock header %}
 {% block content %}
 <h2 class="content-section" >Update</h2>
-    # the action argument needs to be the same as the page and the method needs to be POST
+    {# the action argument needs to be the same as the page and the method needs to be POST #}
     <form class="content-section" action="/update", method="POST">
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" value="{{ user.username|e }}">
+        <input type="text" name="username" id="username" value="{{ user.username|e }}"><br>
         <label for="password">Password:</label>
-        <input type="text" name="password" id="password" value="{{ user.password|e }}">
+        <input type="text" name="password" id="password" value="{{ user.password|e }}"><br>
         <label for="email">email:</label>
-        <input type="text" name="email" id="email" value="{{ user.email|e }}">
+        <input type="text" name="email" id="email" value="{{ user.email|e }}"><br>
         <label for="institution">Institution:</label>
-        <input type="text" name="institution" id="institution" value="{{ user.institution|e }}">
+        <input type="text" name="institution" id="institution" value="{{ user.institution|e }}"><br>
         <input type="hidden" name="id" value="{{ user.id }}" />
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Update</button>
     </form>
 {% endblock content %}
