@@ -1,1 +1,1 @@
-web: gunicorn app:question_db
+web: gunicorn app: question_db
