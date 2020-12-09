@@ -1,0 +1,23 @@
+{% extends "base.j2" %}
+{% block header %}
+{#    <span class="content-section">About Page</span>#}
+{% endblock header %}
+{% block content %}
+<h2 class="content-section" >Enter Question</h2>
+ {# the action argument needs to be the same as the page and the method needs to be POST#}
+    <form class="content-section" action="/enter_question", method="POST">
+        <label for="textbook">Textbook:</label>
+        <input type="text" name="textbook" id="textbook"><br>
+        <label for="chapter">Chapter:</label>
+        <input type="number" name="chapter" id="chapter"><br>
+        <label for="section">Section:</label>
+        <input type="text" name="section" id="section"><br>
+        <label for="submitted_by">Submitted By:</label>
+        <input type="text" name="submitted_by" id="submitted_by"><br>
+        <label for="question_text">Question Text:</label>
+        <input type="text" name="question_text" id="question_text"><br>
+        <label for="topic">Topic:</label>
+        <input type="number" name="topic" id="topic"><br>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+{% endblock content %}

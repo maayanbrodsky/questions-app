@@ -9,7 +9,7 @@ app.config.from_pyfile('config.py')
 
 
 db = PostgresqlDatabase(
-        'question_app_db',  # Required by Peewee.
+        'test1',  # Required by Peewee.
         user='postgres',  # Will be passed directly to psycopg2.
         password='Agent99',  # Ditto.
     )
@@ -43,6 +43,7 @@ class Questions(BaseModel):
     chapter = IntegerField()
     section = TextField()
     submitted_by = ForeignKeyField(Users)
+    question_text = TextField()
     topic = ForeignKeyField(Topics)
 
     class Meta:
@@ -113,6 +114,34 @@ def update():
                      email=details['email'],
                      institution=details['institution']).where(Users.id == details['id']).execute()
         return render_template('about.j2')
+
+
+@app.route("/enter_question", methods=['GET', 'POST'])
+def enter_question():
+    if request.method == 'GET':
+        return render_template('enter_question.j2')
+    elif request.method == 'POST':
+        details = dict(request.form)
+        print(details)
+        Questions.create(textbook=details['textbook'],
+                         chapter=details['chapter'],
+                         section=details['section'],
+                         submitted_by=details['submitted_by'],
+                         question_text=details['question_text'],
+                         topic=details['topic'],)
+        return render_template('about.j2')
+
+
+@app.route("/topics", methods=['GET', 'POST'])
+def enter_topic():
+    if request.method == 'GET':
+        return render_template('topics.j2')
+    elif request.method == 'POST':
+        details = dict(request.form)
+        print(details)
+        Topics.create(topic=details['topic'])
+    return render_template('home.j2')
+
 
 
 if __name__ == '__main__':

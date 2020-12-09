@@ -1,0 +1,10 @@
+{% extends "base.j2" %}
+{% block content %}
+<h2 class="content-section" >Enter Topic</h2>
+ {# the action argument needs to be the same as the page and the method needs to be POST#}
+    <form class="content-section" action="/topics", method="POST">
+        <label for="topic">Topic:</label>
+        <input type="text" name="topic" id="topic"><br>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+{% endblock content %}
