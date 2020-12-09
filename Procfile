@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: gunicorn app:question_db
