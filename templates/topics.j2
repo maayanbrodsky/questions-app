@@ -4,7 +4,20 @@
  {# the action argument needs to be the same as the page and the method needs to be POST#}
     <form class="content-section" action="/topics", method="POST">
         <label for="topic">Topic:</label>
-        <input type="text" name="topic" id="topic"><br>
+        <input type="text" name="topic" id="topic">
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
+    <div class="content-section"><b>Topic List</b></div>
+    <table  class="table" style="margin-left: 20px; border:2px solid black;">
+        <tr>
+            <th>ID</th>
+            <th>Topic</th>
+        </tr>
+        {% for topic in topics %}
+        <tr>
+            <td>{{ topic.id|e }}</td>
+            <td>{{ topic.topic|e }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}

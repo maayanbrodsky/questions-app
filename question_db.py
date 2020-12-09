@@ -102,13 +102,11 @@ def delete():
 @app.route("/update", methods=['GET', 'POST'])
 def update():
     if request.method == 'GET':
-        print(request.args)
         id = request.args.get('id')  #This gets the id from the "read" template "<td><a href="/update?id={{ user.id }}">DELETE</a>"
         user = Users.select().where(Users.id == id).get()
         return render_template('update.j2', user=user)
     elif request.method == 'POST':
         details = dict(request.form)
-        print(details)
         Users.update(username=details['username'],
                      password=details['password'],
                      email=details['email'],
@@ -122,7 +120,6 @@ def enter_question():
         return render_template('enter_question.j2')
     elif request.method == 'POST':
         details = dict(request.form)
-        print(details)
         Questions.create(textbook=details['textbook'],
                          chapter=details['chapter'],
                          section=details['section'],
@@ -135,7 +132,8 @@ def enter_question():
 @app.route("/topics", methods=['GET', 'POST'])
 def enter_topic():
     if request.method == 'GET':
-        return render_template('topics.j2')
+        topics = Topics.select()
+        return render_template('topics.j2', topics=topics)
     elif request.method == 'POST':
         details = dict(request.form)
         print(details)
