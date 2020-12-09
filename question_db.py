@@ -29,10 +29,10 @@ class Topics(BaseModel):
 
 
 class Users(BaseModel):
-    username = TextField()
-    email = TextField()
-    password = TextField()
-    institution = TextField()
+    username = TextField(null=False, unique=True)
+    email = TextField(null=False, unique=True)
+    password = TextField(null=False)
+    institution = TextField(null=False)
 
     class Meta:
         table_name = 'users'
@@ -43,7 +43,7 @@ class Questions(BaseModel):
     chapter = IntegerField()
     section = TextField()
     submitted_by = ForeignKeyField(Users)
-    question_text = TextField()
+    question_text = TextField(null=False)
     topic = ForeignKeyField(Topics)
 
     class Meta:
