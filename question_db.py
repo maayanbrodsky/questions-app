@@ -1,7 +1,8 @@
 from flask import render_template, request
 import os
-from playhouse.db_url import connect
+
 from dotenv import load_dotenv
+from Models import Users, Topics, Questions
 
 
 from app import app
@@ -9,7 +10,7 @@ from app import app
 load_dotenv()
 app.secret_key = os.environ.get('SECRET_KEY')
 
-db = connect(os.environ.get('DATABASE_URL'))
+
 
 
 @app.route("/")

@@ -1,4 +1,10 @@
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
+from playhouse.db_url import connect
+import os
+
+
+db = connect(os.environ.get('DATABASE_URL'))
+
 
 class BaseModel(Model):
 

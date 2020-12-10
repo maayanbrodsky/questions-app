@@ -1,5 +1,5 @@
 from Models import Topics, Questions, Users
-from question_db import db
+from Models import db
 
 
 TABLES = [Topics, Questions, Users]
