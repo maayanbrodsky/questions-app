@@ -1,8 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
-from datetime import datetime
 
-import config
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
