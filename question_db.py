@@ -19,8 +19,8 @@ from app import app
 db = PostgresqlDatabase(
     'd5crvdso7tkkoh',
     user='zmpsjnnpptkxyp',
-    password='1b226892e7fcd2636f5738e9e96ef5402be48402937221bbd6132ea35ead9295',
-    host='ec2-35-169-184-61.compute-1.amazonaws.com',
+    password=,
+    host=,
     port='5432',
 )
 
