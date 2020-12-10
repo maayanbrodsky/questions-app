@@ -1,87 +1,16 @@
 from flask import render_template, request
-from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
 import os
 from playhouse.db_url import connect
+from dotenv import load_dotenv
 
-
-# from m_secret import HOST, DATABASE, USER, PORT, PASSWORD
 
 from app import app
 
-
+load_dotenv()
+app.secret_key = os.environ.get('SECRET_KEY')
 
 db = connect(os.environ.get('DATABASE_URL'))
 
-# SECRET_KEY = "SECRET_KEY"
-# print(os.environ)
-
-# db = PostgresqlDatabase(
-#     config('DATABASE'),
-#     user=config('USER'),
-#     password=config('PASSWORD'),
-#     host=config('HOST'),
-#     port=config('PORT'),
-# )
-#
-
-# db = PostgresqlDatabase(
-#     os.getenv('DATABASE'),
-#     user=os.getenv('USER'),
-#     password=os.getenv('PASSWORD'),
-#     host=os.getenv('HOST'),
-#     port=os.getenv('PORT'),
-# )
-
-# db = PostgresqlDatabase(
-#     DATABASE,
-#     user=USER,
-#     password=PASSWORD,
-#     host=HOST,
-#     port=PORT
-# )
-
-
-class BaseModel(Model):
-
-    class Meta:
-        database = db
-
-
-class Topics(BaseModel):
-    topic = TextField()
-
-    class Meta:
-        table_name = 'topics'
-
-
-class Users(BaseModel):
-    username = TextField(null=False, unique=True)
-    email = TextField(null=False, unique=True)
-    password = TextField(null=False)
-    institution = TextField(null=False)
-
-    class Meta:
-        table_name = 'users'
-
-
-class Questions(BaseModel):
-    textbook = TextField()
-    chapter = IntegerField()
-    section = TextField()
-    submitted_by = ForeignKeyField(Users)
-    question_text = TextField(null=False)
-    topic = ForeignKeyField(Topics)
-
-    class Meta:
-        table_name = 'questions'
-
-
-
-TABLES = [Topics, Questions, Users]
-
-
-with db.connection_context():
-    db.create_tables(TABLES, safe=True)
 
 @app.route("/")
 def home():
