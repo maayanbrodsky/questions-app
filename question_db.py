@@ -2,7 +2,7 @@ from flask import render_template, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
 import os
 
-from m_secret import HOST, DATABASE, USER, PORT, PASSWORD
+# from m_secret import HOST, DATABASE, USER, PORT, PASSWORD
 
 from app import app
 
