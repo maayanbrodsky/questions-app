@@ -6,11 +6,20 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 
+# db = PostgresqlDatabase(
+#         'test1',  # Required by Peewee.
+#         user='postgres',  # Will be passed directly to psycopg2.
+#         password='Agent99',  # Ditto.
+#     )
+
+
 db = PostgresqlDatabase(
-        'test1',  # Required by Peewee.
-        user='postgres',  # Will be passed directly to psycopg2.
-        password='Agent99',  # Ditto.
-    )
+    'd5crvdso7tkkoh',
+    user='zmpsjnnpptkxyp',
+    password='1b226892e7fcd2636f5738e9e96ef5402be48402937221bbd6132ea35ead9295',
+    host='ec2-35-169-184-61.compute-1.amazonaws.com',
+    port='5432',
+)
 
 
 class BaseModel(Model):
