@@ -1,9 +1,9 @@
 from flask import Flask, render_template, url_for, redirect, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
+from app import app
 
-
-app = Flask(__name__)
-app.config.from_pyfile('config.py')
+# app = Flask(__name__)
+# app.config.from_pyfile('config.py')
 
 
 # db = PostgresqlDatabase(
