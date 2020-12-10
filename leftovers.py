@@ -23,3 +23,35 @@ class Question(db.Model):
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
+
+
+# app = Flask(__name__)
+# app.config.from_pyfile('config.py')
+
+
+# db = PostgresqlDatabase(
+#         'test1',  # Required by Peewee.
+#         user='postgres',  # Will be passed directly to psycopg2.
+#         password='Agent99',  # Ditto.
+#     )
+
+# SECRET_KEY = "SECRET_KEY"
+# print(os.environ)
+
+# db = PostgresqlDatabase(
+#     config('DATABASE'),
+#     user=config('USER'),
+#     password=config('PASSWORD'),
+#     host=config('HOST'),
+#     port=config('PORT'),
+# )
+#
+
+# db = PostgresqlDatabase(
+#     os.getenv('DATABASE'),
+#     user=os.getenv('USER'),
+#     password=os.getenv('PASSWORD'),
+#     host=os.getenv('HOST'),
+#     port=os.getenv('PORT'),
+# )
+
