@@ -1,5 +1,6 @@
 from flask import render_template, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
+from decouple import config
 
 
 
@@ -17,11 +18,11 @@ from app import app
 
 
 db = PostgresqlDatabase(
-    'd5crvdso7tkkoh',
-    user='zmpsjnnpptkxyp',
-    password=,
-    host=,
-    port='5432',
+    config('DATABASE'),
+    user=config('USER'),
+    password=config('PASSWORD'),
+    host=config('HOST'),
+    port=config('PORT'),
 )
 
 
