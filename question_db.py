@@ -1,12 +1,18 @@
 from flask import render_template, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
 import os
+from playhouse.db_url import connect
+
 
 # from m_secret import HOST, DATABASE, USER, PORT, PASSWORD
 
 from app import app
 
-SECRET_KEY = "SECRET_KEY"
+
+
+db = connect(os.environ.get('DATABASE_URL'))
+
+# SECRET_KEY = "SECRET_KEY"
 # print(os.environ)
 
 # db = PostgresqlDatabase(
@@ -18,13 +24,13 @@ SECRET_KEY = "SECRET_KEY"
 # )
 #
 
-db = PostgresqlDatabase(
-    os.getenv('DATABASE'),
-    user=os.getenv('USER'),
-    password=os.getenv('PASSWORD'),
-    host=os.getenv('HOST'),
-    port=os.getenv('PORT'),
-)
+# db = PostgresqlDatabase(
+#     os.getenv('DATABASE'),
+#     user=os.getenv('USER'),
+#     password=os.getenv('PASSWORD'),
+#     host=os.getenv('HOST'),
+#     port=os.getenv('PORT'),
+# )
 
 # db = PostgresqlDatabase(
 #     DATABASE,
