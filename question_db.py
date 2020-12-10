@@ -1,5 +1,8 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import render_template, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
+
+
+
 from app import app
 
 # app = Flask(__name__)

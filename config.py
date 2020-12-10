@@ -1,3 +1,5 @@
+from decouple import config
+
 DEBUG = True
 TESTING = True
 TEMPLATES_AUTO_REOLAD = True
