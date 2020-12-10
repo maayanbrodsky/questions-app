@@ -1,16 +1,14 @@
-from flask import render_template, request
 import os
 
 from dotenv import load_dotenv
-from Models import Users, Topics, Questions
+from flask import render_template, request
 
-
+from Models import Questions, Topics, Users
 from app import app
+
 
 load_dotenv()
 app.secret_key = os.environ.get('SECRET_KEY')
-
-
 
 
 @app.route("/")
@@ -95,7 +93,6 @@ def enter_topic():
         print(details)
         Topics.create(topic=details['topic'])
     return render_template('home.j2')
-
 
 
 if __name__ == '__main__':
