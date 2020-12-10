@@ -6,6 +6,7 @@ import os
 
 from app import app
 
+SECRET_KEY = "SECRET_KEY"
 # print(os.environ)
 
 # db = PostgresqlDatabase(
@@ -16,21 +17,22 @@ from app import app
 #     port=config('PORT'),
 # )
 #
-# db = PostgresqlDatabase(
-#     os.getenv('DATABASE'),
-#     user=os.getenv('USER'),
-#     password=os.getenv('PASSWORD'),
-#     host=os.getenv('HOST'),
-#     port=os.getenv('PORT'),
-# )
 
 db = PostgresqlDatabase(
-    DATABASE,
-    user=USER,
-    password=PASSWORD,
-    host=HOST,
-    port=PORT
+    os.getenv('DATABASE'),
+    user=os.getenv('USER'),
+    password=os.getenv('PASSWORD'),
+    host=os.getenv('HOST'),
+    port=os.getenv('PORT'),
 )
+
+# db = PostgresqlDatabase(
+#     DATABASE,
+#     user=USER,
+#     password=PASSWORD,
+#     host=HOST,
+#     port=PORT
+# )
 
 
 class BaseModel(Model):
