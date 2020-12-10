@@ -1,28 +1,35 @@
 from flask import render_template, request
 from peewee import (ForeignKeyField, IntegerField, TextField, PostgresqlDatabase, Model)
-from decouple import config
+import os
 
-
+from m_secret import HOST, DATABASE, USER, PORT, PASSWORD
 
 from app import app
 
-# app = Flask(__name__)
-# app.config.from_pyfile('config.py')
-
+# print(os.environ)
 
 # db = PostgresqlDatabase(
-#         'test1',  # Required by Peewee.
-#         user='postgres',  # Will be passed directly to psycopg2.
-#         password='Agent99',  # Ditto.
-#     )
-
+#     config('DATABASE'),
+#     user=config('USER'),
+#     password=config('PASSWORD'),
+#     host=config('HOST'),
+#     port=config('PORT'),
+# )
+#
+# db = PostgresqlDatabase(
+#     os.getenv('DATABASE'),
+#     user=os.getenv('USER'),
+#     password=os.getenv('PASSWORD'),
+#     host=os.getenv('HOST'),
+#     port=os.getenv('PORT'),
+# )
 
 db = PostgresqlDatabase(
-    config('DATABASE'),
-    user=config('USER'),
-    password=config('PASSWORD'),
-    host=config('HOST'),
-    port=config('PORT'),
+    DATABASE,
+    user=USER,
+    password=PASSWORD,
+    host=HOST,
+    port=PORT
 )
 
 
